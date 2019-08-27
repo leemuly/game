@@ -197,14 +197,17 @@ function main() {
       globals.player = gameObject.addComponent(Player);
       gameObject.transform.position.x = -130;
       gameObject.transform.position.y = 5;
+      globals.congaLine.push(globals.player);
     }
     {
       const ducks = ["duck", "duck", "duck"];
       ducks.forEach((name, ndx) => {
         globals.duckCount++;
-        const gameObject = gameObjectManager.createGameObject(scene, name);
-        gameObject.addComponent(Duck);
-        gameObject.transform.position.x = -130 - ndx * 7;
+        ndx = ndx+1;
+        const gameObject = gameObjectManager.createGameObject(scene, name+ndx, ndx);
+        console.log(globals.congaLine)
+        globals.congaLine.push(gameObject.addComponent(Duck));
+        gameObject.transform.position.x = -135 - ndx * 7;
         gameObject.transform.position.y = 0;
       });
       globals.originalCount = globals.duckCount;
