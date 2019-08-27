@@ -178,7 +178,8 @@ function main() {
     originalCount: 0,
     obstacles: [],
     environment: [],
-    fireballs: []
+    fireballs: [],
+    congaLine: []
   };
   gameObjectManager = new GameObjectManager();
   inputManager = new InputManager();
@@ -332,25 +333,7 @@ function main() {
       });
       globals.originalCount = globals.duckCount;
     }
-
-    const animalModelNames = ["zebra", "horse", "phoenix"];
   }
-
-  // loading obj trees
-  // {
-  //   const objLoader = new THREE.OBJLoader2();
-  //   objLoader.loadMtl(
-  //     "resources/models/windmill/tree3.mtl",
-  //     null,
-  //     materials => {
-  //       objLoader.setMaterials(materials);
-  //       objLoader.load("resources/models/windmill/tree3.obj", event => {
-  //         const root = event.detail.loaderRootNode;
-  //         scene.add(root);
-  //       });
-  //     }
-  //   );
-  // }
 
   {
     const objLoader = new THREE.OBJLoader2();

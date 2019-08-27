@@ -15,7 +15,8 @@ let globals = {
   mushroom: null,
   obstacles: [],
   environment: [],
-  fireballs: []
+  fireballs: [],
+  congaLine: []
 };
 
 let inputManager = null;

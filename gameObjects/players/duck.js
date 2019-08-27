@@ -20,7 +20,6 @@ class Duck extends Component {
 
     const transform = gameObject.transform;
     const obstacles = globals.obstacles;
-    const playerTransform = globals.horse.gameObject.transform;
     const hitRadius = model.size / 2;
 
     this.fsm = new FiniteStateMachine(
@@ -75,11 +74,7 @@ class Duck extends Component {
     this.fsm.update();
 
     if (!this.isCaught) {
-      const { deltaTime, moveSpeed } = globals;
       const { transform } = this.gameObject;
-      const delta =
-        (inputManager.keys.left.down ? 1 : 0) +
-        (inputManager.keys.right.down ? -1 : 0);
 
       // direction vector is initialized to point in the same direction of the head of the bird
       let direction = new THREE.Vector3(1, 0, 0);
