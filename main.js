@@ -199,6 +199,17 @@ function main() {
       gameObject.transform.position.y = 5;
     }
     {
+      const ducks = ["duck", "duck", "duck"];
+      ducks.forEach((name, ndx) => {
+        globals.duckCount++;
+        const gameObject = gameObjectManager.createGameObject(scene, name);
+        gameObject.addComponent(Duck);
+        gameObject.transform.position.x = -130 - ndx * 7;
+        gameObject.transform.position.y = 0;
+      });
+      globals.originalCount = globals.duckCount;
+    }
+    {
       const gameObject = gameObjectManager.createGameObject(scene, "zebra");
       globals.zebra = gameObject.addComponent(Animal, models["zebra"]);
       gameObject.transform.position.x = 7;
@@ -322,17 +333,6 @@ function main() {
       }
     }
 
-    {
-      const ducks = ["duck", "duck", "duck"];
-      ducks.forEach((name, ndx) => {
-        globals.duckCount++;
-        const gameObject = gameObjectManager.createGameObject(scene, name);
-        gameObject.addComponent(Duck);
-        gameObject.transform.position.x = -130 - ndx * 7;
-        gameObject.transform.position.y = 0;
-      });
-      globals.originalCount = globals.duckCount;
-    }
   }
 
   {
