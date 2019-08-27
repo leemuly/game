@@ -54,6 +54,7 @@ class Duck extends Component {
     );
   }
   update() {
+    //retrieves numbers of present and lost ducks from global variables and renders living/lost icons accordingly
     let duckDisplay = () => {
       let displayHTML = "";
       for(let count = 0; count < globals.duckCount; count++) {displayHTML += `<img class=life src="../../resources/images/duckicon.png"/>`}
@@ -76,34 +77,34 @@ class Duck extends Component {
     if (!this.isCaught) {
       const { transform } = this.gameObject;
 
-      // direction vector is initialized to point in the same direction of the head of the bird
+      // // direction vector is initialized to point in the same direction of the head of the bird
       let direction = new THREE.Vector3(1, 0, 0);
 
-      // rotate 90 degrees on right arrow key press
-      if (inputManager.keys.right.down) {
-        transform.rotation.y -= Math.PI / 36;
-      }
+      // // rotate 90 degrees on right arrow key press
+      // if (inputManager.keys.right.down) {
+      //   transform.rotation.y -= Math.PI / 36;
+      // }
 
-      // rotate 90 degrees on left arrow key press
-      if (inputManager.keys.left.down) {
-        transform.rotation.y += Math.PI / 36;
-
-        // the following code gets the direction vector that our bird is facing
-        var matrix = new THREE.Matrix4();
-        matrix.extractRotation(transform.matrix);
-
-        direction.applyMatrix4(matrix);
-      }
+      // // rotate 90 degrees on left arrow key press
+      // if (inputManager.keys.left.down) {
+      //   transform.rotation.y += Math.PI / 36;
+      // }
 
       // move in direction of head by one unit
-      if (inputManager.keys.up.down) {
+      if (globals.player.gameObject.transform.position !== transform.position) {
         transform.translateOnAxis(direction, 1);
       }
 
       // move backwards
-      if (inputManager.keys.down.down) {
+      if (globals.player.gameObject.transform.position !== transform.position) {
         transform.translateOnAxis(direction, -1);
       }
+
+      // get location of gameobj in front of duck in conga line
+      // make a direction vector based on that
+      // let direction = ;
+      // this.gameObject.transform.translateOnAxis(direction, globals.player.gameObject.transform.position-this.gameObject.transform.position)
+
     }
   }
 }

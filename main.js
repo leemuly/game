@@ -203,13 +203,12 @@ function main() {
       const ducks = ["duck", "duck", "duck"];
       ducks.forEach((name, ndx) => {
         globals.duckCount++;
-        ndx = ndx+1;
-        const gameObject = gameObjectManager.createGameObject(scene, name+ndx, ndx);
-        console.log(globals.congaLine)
+        const gameObject = gameObjectManager.createGameObject(scene, name, ndx+1);
         globals.congaLine.push(gameObject.addComponent(Duck));
         gameObject.transform.position.x = -135 - ndx * 7;
         gameObject.transform.position.y = 0;
       });
+      console.log(globals.congaLine)
       globals.originalCount = globals.duckCount;
     }
     {
