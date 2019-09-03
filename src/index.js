@@ -3,6 +3,12 @@
 /* eslint-disable max-statements */
 "use strict";
 
+const THREE = require('three');
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OBJLoader2 } from 'three/examples/jsm/loaders/OBJLoader2';
+import { Sky } from '../gameObjects/sky'
+
 /* global THREE, dat */
 const vertex = new THREE.Vector3();
 const color = new THREE.Color();
@@ -38,18 +44,18 @@ function main() {
   const sound = new THREE.Audio(listener);
 
   const audioLoader = new THREE.AudioLoader();
-  audioLoader.load("resources/music/Horror Stories.ogg", function(buffer) {
+  audioLoader.load("../resources/music/Horror Stories.ogg", function(buffer) {
     sound.setBuffer(buffer);
     sound.setLoop(true);
     sound.setVolume(0.5);
   });
 
-  const controls = new THREE.OrbitControls(camera, canvas);
+  const controls = new OrbitControls(camera, canvas);
   controls.enableKeys = false;
   controls.target.set(0, 10, 0);
   controls.update();
 
-  scene = new THREE.Scene();
+  const scene = new THREE.Scene();
   scene.background = new THREE.Color("white");
 
   function addLight(...pos) {
@@ -226,7 +232,7 @@ function main() {
   };
 
   {
-    const gltfLoader = new THREE.GLTFLoader(manager);
+    const gltfLoader = new GLTFLoader(manager);
     for (const model of Object.values(models)) {
       gltfLoader.load(model.url, gltf => {
         model.gltf = gltf;
@@ -440,10 +446,10 @@ function main() {
     }
   }
   {
-    const objLoader = new THREE.OBJLoader2();
-    objLoader.loadMtl("resources/models/pond/flower2.mtl", null, materials => {
+    const objLoader = new OBJLoader2();
+    objLoader.loadMtl("../resources/models/pond/flower2.mtl", null, materials => {
       objLoader.setMaterials(materials);
-      objLoader.load("resources/models/pond/flower2.obj", event => {
+      objLoader.load("../resources/models/pond/flower2.obj", event => {
         const root = event.detail.loaderRootNode;
         scene.add(root);
       });
@@ -451,10 +457,10 @@ function main() {
   }
 
   {
-    const objLoader = new THREE.OBJLoader2();
-    objLoader.loadMtl("resources/models/pond/pond4.mtl", null, materials => {
+    const objLoader = new OBJLoader2();
+    objLoader.loadMtl("../resources/models/pond/pond4.mtl", null, materials => {
       objLoader.setMaterials(materials);
-      objLoader.load("resources/models/pond/pond4.obj", event => {
+      objLoader.load("../resources/models/pond/pond4.obj", event => {
         const root = event.detail.loaderRootNode;
         scene.add(root);
       });
@@ -462,10 +468,10 @@ function main() {
   }
 
   {
-    const objLoader = new THREE.OBJLoader2();
-    objLoader.loadMtl("resources/models/pond/floor2.mtl", null, materials => {
+    const objLoader = new OBJLoader2();
+    objLoader.loadMtl("../resources/models/pond/floor2.mtl", null, materials => {
       objLoader.setMaterials(materials);
-      objLoader.load("resources/models/pond/floor2.obj", event => {
+      objLoader.load("../resources/models/pond/floor2.obj", event => {
         const root = event.detail.loaderRootNode;
         scene.add(root);
       });
@@ -473,13 +479,13 @@ function main() {
   }
 
   {
-    const objLoader = new THREE.OBJLoader2();
+    const objLoader = new OBJLoader2();
     objLoader.loadMtl(
-      "resources/models/pond/floorOutside2.mtl",
+      "../resources/models/pond/floorOutside2.mtl",
       null,
       materials => {
         objLoader.setMaterials(materials);
-        objLoader.load("resources/models/pond/floorOutside2.obj", event => {
+        objLoader.load("../resources/models/pond/floorOutside2.obj", event => {
           const root = event.detail.loaderRootNode;
 
           scene.add(root);

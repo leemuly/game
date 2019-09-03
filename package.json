@@ -1,0 +1,27 @@
+{
+  "name": "lucky-duckies",
+  "version": "1.0.0",
+  "description": "browser based 3d game",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leemuly/game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leemuly/game/issues"
+  },
+  "homepage": "https://github.com/leemuly/game#readme",
+  "dependencies": {
+    "three": "^0.108.0",
+    "three-orbitcontrols": "^2.102.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  }
+}

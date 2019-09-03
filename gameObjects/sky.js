@@ -14,6 +14,8 @@
  * Three.js integration by zz85 http://twitter.com/blurspline
 */
 
+const THREE = require('three');
+
 const Sky = function () {
 
 	const shader = Sky.SkyShader;
@@ -219,3 +221,5 @@ Sky.SkyShader = {
 	].join( '\n' )
 
 };
+
+export { Sky };
